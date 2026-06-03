@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unregulated Global P2P Cryptocurrency</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: #f8fafc;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 40px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #111827, #1e293b);
+      border-bottom: 1px solid #334155;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+      color: #38bdf8;
+    }
+
+    header p {
+      max-width: 750px;
+      margin: auto;
+      color: #cbd5e1;
+      font-size: 1.05rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .progress-box {
+      background: #1e293b;
+      padding: 18px;
+      border-radius: 14px;
+      margin-bottom: 25px;
+      border: 1px solid #334155;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 14px;
+      background: #334155;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: #38bdf8;
+      transition: 0.3s;
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .tab-btn {
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: #1e293b;
+      color: #f8fafc;
+      cursor: pointer;
+      font-weight: bold;
+      border: 1px solid #334155;
+      transition: 0.2s;
+    }
+
+    .tab-btn:hover,
+    .tab-btn.active {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+
+    .section {
+      display: none;
+      background: #1e293b;
+      padding: 25px;
+      border-radius: 16px;
+      border: 1px solid #334155;
+      margin-bottom: 25px;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section h2 {
+      color: #38bdf8;
+      margin-bottom: 12px;
+    }
+
+    .section h3 {
+      margin-top: 18px;
+      margin-bottom: 8px;
+      color: #e0f2fe;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 8px;
+      color: #dbeafe;
+    }
+
+    .highlight {
+      background: #0f172a;
+      padding: 15px;
+      border-left: 4px solid #38bdf8;
+      border-radius: 8px;
+      margin: 15px 0;
+      color: #e2e8f0;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 18px;
+    }
+
+    .card {
+      background: #0f172a;
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid #334155;
+    }
+
+    .card h4 {
+      color: #7dd3fc;
+      margin-bottom: 8px;
+    }
+
+    .quiz {
+      background: #020617;
+      padding: 25px;
+      border-radius: 16px;
+      border: 1px solid #334155;
+      margin-top: 30px;
+    }
+
+    .quiz h2 {
+      color: #38bdf8;
+      margin-bottom: 15px;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question p {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .option {
+      display: block;
+      margin: 8px 0;
+      padding: 10px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .option:hover {
+      background: #334155;
+    }
+
+    button.check-btn {
+      padding: 12px 20px;
+      background: #38bdf8;
+      color: #0f172a;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #facc15;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #334155;
+      color: #bae6fd;
+      padding: 5px 10px;
+      border-radius: 20px;
+      margin: 4px;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Unregulated Global P2P Cryptocurrency</h1>
+    <p>
+      An interactive learning platform explaining how peer-to-peer cryptocurrency works,
+      why people use it, what risks it creates, and how governments are trying to regulate it.
+    </p>
+  </header>
+
+  <main class="container">
+
+    <div class="progress-box">
+      <strong>Learning Progress</strong>
+      <p>Click through each pillar to complete the learning path.</p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showSection('intro', this)">1. Introduction</button>
+      <button class="tab-btn" onclick="showSection('tech', this)">2. How It Works</button>
+      <button class="tab-btn" onclick="showSection('benefits', this)">3. Benefits</button>
+      <button class="tab-btn" onclick="showSection('risks', this)">4. Risks</button>
+      <button class="tab-btn" onclick="showSection('recent', this)">5. Recent Developments</button>
+      <button class="tab-btn" onclick="showSection('jurisdiction', this)">6. Government Jurisdiction</button>
+    </div>
+
+    <section id="intro" class="section active">
+      <h2>1. Introduction: Money Without a Middleman</h2>
+      <p>
+        Peer-to-peer cryptocurrency allows users to send digital value directly to each other
+        without relying on a bank, card network, or payment company to approve the transaction.
+      </p>
+
+      <div class="highlight">
+        <strong>Core Question:</strong> Can money work globally without traditional financial institutions?
+      </div>
+
+      <h3>Key Idea</h3>
+      <p>
+        Traditional finance depends on institutions. P2P cryptocurrency depends on cryptography,
+        distributed networks, and user-controlled private keys.
+      </p>
+
+      <div>
+        <span class="tag">Bitcoin</span>
+        <span class="tag">Peer-to-peer</span>
+        <span class="tag">Cryptography</span>
+        <span class="tag">No central authority</span>
+      </div>
+    </section>
+
+    <section id="tech" class="section">
+      <h2>2. How P2P Cryptocurrency Works</h2>
+      <p>
+        Cryptocurrency replaces institutional trust with technical verification.
+      </p>
+
+      <div class="card-grid">
+        <div class="card">
+          <h4>Digital Signatures</h4>
+          <p>Prove that the sender controls the funds without revealing the private key.</p>
+        </div>
+
+        <div class="card">
+          <h4>Hash Functions</h4>
+          <p>Protect data integrity and make transaction records difficult to alter.</p>
+        </div>
+
+        <div class="card">
+          <h4>Blockchain</h4>
+          <p>Stores transactions in linked blocks, creating a shared record across the network.</p>
+        </div>
+
+        <div class="card">
+          <h4>Consensus</h4>
+          <p>Allows the network to agree on which transactions are valid.</p>
+        </div>
+      </div>
+
+      <div class="highlight">
+        Instead of asking “Which bank approved this?”, the network asks:
+        “Does the cryptographic proof show that this transaction is valid?”
+      </div>
+    </section>
+
+    <section id="benefits" class="section">
+      <h2>3. Benefits of P2P Cryptocurrency</h2>
+      <p>
+        P2P cryptocurrency is attractive because it reduces dependence on traditional financial intermediaries.
+      </p>
+
+      <ul>
+        <li>Fast cross-border transfers</li>
+        <li>24/7 global access</li>
+        <li>Useful for users without easy banking access</li>
+        <li>Can support remittances and freelancer payments</li>
+        <li>Gives users more direct control over their funds</li>
+        <li>Stablecoins can reduce volatility compared to normal cryptocurrencies</li>
+      </ul>
+
+      <div class="highlight">
+        In many countries, cryptocurrency is not only an investment tool. It is also used as
+        an alternative payment and value-transfer system.
+      </div>
+    </section>
+
+    <section id="risks" class="section">
+      <h2>4. Risks and Dark Side</h2>
+      <p>
+        The same features that make P2P cryptocurrency useful can also make it risky.
+      </p>
+
+      <div class="card-grid">
+        <div class="card">
+          <h4>Financial Crime</h4>
+          <p>Wallet-to-wallet transfers can make money laundering and sanctions evasion harder to detect.</p>
+        </div>
+
+        <div class="card">
+          <h4>Scams and Fraud</h4>
+          <p>Users may lose funds through fake investments, phishing, or fraudulent platforms.</p>
+        </div>
+
+        <div class="card">
+          <h4>No Chargebacks</h4>
+          <p>Once a transaction is confirmed, it usually cannot be reversed like a card payment.</p>
+        </div>
+
+        <div class="card">
+          <h4>Private Key Loss</h4>
+          <p>If a user loses their private key, they may permanently lose access to their funds.</p>
+        </div>
+      </div>
+
+      <div class="highlight">
+        Cryptocurrency is not automatically criminal, but its borderless and pseudonymous nature
+        makes enforcement more difficult.
+      </div>
+    </section>
+
+    <section id="recent" class="section">
+      <h2>5. Recent Developments</h2>
+      <p>
+        P2P cryptocurrency is evolving quickly, especially through stablecoins, adoption in emerging markets,
+        and new regulation.
+      </p>
+
+      <h3>Research Examples</h3>
+      <ul>
+        <li>
+          <strong>Chainalysis 2025:</strong> India, the United States, Pakistan, Vietnam,
+          and Brazil ranked among the top countries in global crypto adoption.
+        </li>
+        <li>
+          <strong>Singapore 2023:</strong> The Monetary Authority of Singapore finalised
+          a stablecoin regulatory framework to improve value stability and oversight.
+        </li>
+        <li>
+          <strong>EU MiCA:</strong> The European Union introduced a common regulatory framework
+          for crypto-asset issuers and service providers.
+        </li>
+        <li>
+          <strong>FATF 2025:</strong> More jurisdictions are implementing the Travel Rule
+          to identify originators and beneficiaries of crypto transfers.
+        </li>
+      </ul>
+
+      <div class="highlight">
+        The trend is moving from “unregulated crypto” to “regulated access points.”
+      </div>
+    </section>
+
+    <section id="jurisdiction" class="section">
+      <h2>6. Government Jurisdiction</h2>
+      <p>
+        The main challenge is that cryptocurrency is global, but law is national.
+        Governments cannot easily control every wallet-to-wallet transaction, so they regulate the surrounding ecosystem.
+      </p>
+
+      <h3>How Governments Are Responding</h3>
+      <ul>
+        <li>Licensing crypto exchanges and wallet providers</li>
+        <li>Requiring Know Your Customer and anti-money laundering checks</li>
+        <li>Applying the FATF Travel Rule to crypto transfers</li>
+        <li>Regulating stablecoin issuers and reserve assets</li>
+        <li>Using blockchain analytics to trace suspicious transactions</li>
+        <li>Creating tax reporting rules for crypto gains</li>
+        <li>Blocking or prosecuting unlicensed crypto platforms</li>
+        <li>Developing central bank digital currencies as regulated alternatives</li>
+      </ul>
+
+      <div class="highlight">
+        Governments may not control every P2P transfer, but they can regulate the entry and exit points
+        where crypto connects to the real economy.
+      </div>
+    </section>
+
+    <section class="quiz">
+      <h2>Quick Knowledge Check</h2>
+
+      <div class="question">
+        <p>1. What does P2P mean in cryptocurrency?</p>
+        <label class="option"><input type="radio" name="q1" value="wrong"> Public-to-private currency</label>
+        <label class="option"><input type="radio" name="q1" value="correct"> Peer-to-peer digital value transfer</label>
+        <label class="option"><input type="radio" name="q1" value="wrong"> Payment-to-payment banking</label>
+      </div>
+
+      <div class="question">
+        <p>2. Why is P2P cryptocurrency difficult to regulate?</p>
+        <label class="option"><input type="radio" name="q2" value="wrong"> Because it only works inside one country</label>
+        <label class="option"><input type="radio" name="q2" value="correct"> Because it can move globally outside traditional banking systems</label>
+        <label class="option"><input type="radio" name="q2" value="wrong"> Because all transactions are always anonymous</label>
+      </div>
+
+      <div class="question">
+        <p>3. What is one way governments are trying to regain jurisdiction?</p>
+        <label class="option"><input type="radio" name="q3" value="correct"> Licensing exchanges and applying AML rules</label>
+        <label class="option"><input type="radio" name="q3" value="wrong"> Removing all internet access</label>
+        <label class="option"><input type="radio" name="q3" value="wrong"> Replacing all banks immediately</label>
+      </div>
+
+      <button class="check-btn" onclick="checkQuiz()">Check My Score</button>
+      <p id="result"></p>
+    </section>
+
+  </main>
+
+  <footer>
+    Created as a companion learning tool for the topic: Unregulated Global P2P Cryptocurrency.
+  </footer>
+
+  <script>
+    const visitedSections = new Set(["intro"]);
+
+    function showSection(sectionId, button) {
+      const sections = document.querySelectorAll(".section");
+      sections.forEach(section => section.classList.remove("active"));
+
+      document.getElementById(sectionId).classList.add("active");
+
+      const buttons = document.querySelectorAll(".tab-btn");
+      buttons.forEach(btn => btn.classList.remove("active"));
+
+      button.classList.add("active");
+
+      visitedSections.add(sectionId);
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const totalSections = 6;
+      const progress = (visitedSections.size / totalSections) * 100;
+      document.getElementById("progressFill").style.width = progress + "%";
+    }
+
+    function checkQuiz() {
+      let score = 0;
+
+      const q1 = document.querySelector('input[name="q1"]:checked');
+      const q2 = document.querySelector('input[name="q2"]:checked');
+      const q3 = document.querySelector('input[name="q3"]:checked');
+
+      if (q1 && q1.value === "correct") score++;
+      if (q2 && q2.value === "correct") score++;
+      if (q3 && q3.value === "correct") score++;
+
+      const result = document.getElementById("result");
+
+      if (score === 3) {
+        result.textContent = "Excellent! You understand the core idea of P2P cryptocurrency.";
+      } else if (score === 2) {
+        result.textContent = "Good work. Review one section and try again.";
+      } else {
+        result.textContent = "Keep going. Revisit the learning pillars above and try again.";
+      }
+    }
+
+    updateProgress();
+  </script>
+
+</body>
+</html>
